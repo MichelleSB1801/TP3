@@ -6,16 +6,31 @@
     <link rel="stylesheet" href="stylesheets/style.css">
   </head>
   <body>
-    <div class="maincontainer">  
-      <div>Ingresar</div>
-      <div>Username</div>
-      <input class="username" type="text" name="">
-      <div>Password</div>
-      <input class="pass" type="password" name="">
-      <div id="enviar">Enviar</div>
-      <a href="http://localhost:3000">Volver</div>
-
-
+    <div class="header">
+      <div class="nav-container">
+        <a class="logo-container">
+          <img class="logo" src="/images/descarga.png">
+        </a>
+        <div class="useract-container">
+          <div class="salir text">Salir</div>
+          <div class="add text">Agregar</div>
+        </div>
+      </div>
+    </div>
+    <div class="main-container">
+      <div class="prodscontainer">  
+        {{#each prod}}
+          <div class="prod-container">
+            <div class="img-container">
+              <img class="image" src="{{this.img}}">
+            </div>
+            <div class="texto-container">  
+                <span class="title">{{this.name}}</span>
+                <span class="price">${{this.price}}</span>
+            </div>
+          </div>  
+        {{/each}}
+      </div>
     </div> 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="javascripts/main.js"></script>

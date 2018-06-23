@@ -7,15 +7,26 @@ let users ={
 		password: 'juani23',
 };
 
+self.userVerif = false;
 
 self.verif = function(data){
+	console.log('userService 1')
+	console.log(data.username, data.pass)
 	if (data.username == users.user && data.pass == users.password) {
-		return true;
+		console.log('userService 2')
+		self.userVerif = true;
 	}else{
-		return false;
+		console.log('userService 3')
+		self.userVerif = false;
 	}
-}
+};
 
+
+self.logout = function(body){
+	console.log('userlogout', body.id, self.userVerif)
+	self.userVerif = body.id;
+	console.log('userlogout', self.userVerif, '2')
+}
 
 /*self.newUser = function(data) {
   const nuevousuario = {

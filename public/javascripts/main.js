@@ -3,12 +3,6 @@ $.ajax({
 	}).done(function(a){
 	});
 
-$('.signin').on('click', function(){
-  console.log('ingresar');
-  window.location.replace('/signin');
-});
-
-let userLog = false;
 
 $('#enviar').on('click', function(){
   let username = $('.username').val()
@@ -23,28 +17,52 @@ $('#enviar').on('click', function(){
     },
     statusCode: {
       '302': function() {
-        window.location.replace('/');
-        userLog = true;
+        window.location.replace('/signin');
       },
+      '400': function(){
+        alert('Error')
+      }
     },
   });
 });
 
-if (userLog == true) {
-  let =
-}
 
+$('.add').on('click', function(){
+  window.location.replace('/agregar');
+});
 
-/*$('.upload').on('click', function(){
-  const img = $('.img').val();
-  const titulo = $('.titulo').val();
+$('.salir').on('click', function(){
+  $.ajax({
+    method: 'PUT',
+    url: 'http://localhost:3000/signin',
+    data: {
+      id: false,
+    },
+    statusCode: {
+      '302': function() {
+        window.location.replace('/');
+      } 
+    }
+  })
+})
+
+$('.newPost').on('click', function(){
+  const name = $('.prodName').val();
+  const img = $('.prodImg').val();
+  const price = $('.prodPrice').val();
   $.ajax({
     method: 'POST',
-    url: 'http://localhost:3000/newpost',
+    url: 'http://localhost:3000/agregar',
     data: {
-      url: img,
-      title: titulo,
+      name: name,
+      img: img,
+      price: price,
     }
   });
-})
-*/
+  window.location.replace('/signin')
+});
+
+$('.volver').on('click', function(){
+
+  window.location.replace('/signin')
+});

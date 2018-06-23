@@ -13,19 +13,12 @@ self.getProducts = function() {
 
 self.upload = function(data) {
   const nuevoprod = {
-    foto: data.url,
-    title: data.title,
-    likes: 0,
-    id: getId()
+    name: data.name,
+    img: data.img,
+    price: data.price,
   }
-  products.push(nuevopost)
-}
-
-function getId() {
-  const length = products.length
-  const newId = products[length - 1].id + 1
-
-  return newId
+  products.push(nuevoprod)
+  console.log(products, 'service')
 }
 
 
